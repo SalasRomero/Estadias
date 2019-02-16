@@ -25,7 +25,7 @@
                 $resultadoform=mysqli_query($conn,$queryform); 
                 $empre='';
                     while($filaform=mysqli_fetch_array($resultadoform)){
-                        $empre=$filaform;
+                        $empre=$filaform["Id_Empresa"];
                 ?>
             <div class="form-group">
               <label for="inputNombreAsesor">Nombre</label>
@@ -47,14 +47,14 @@
                         $resultado=mysqli_query($conn,$query);
     
                     while($fila=mysqli_fetch_array($resultado)){
-                        if($fila["Id_Empresa"]==$empre){
+                        if($fila["Id_Empresa"]===$empre){
                 ?>
                 <option value="<?php echo $fila["Id_Empresa"];?>" selected><?php echo $fila["Nombre"];?></option>
                 <!--<option value="Empresa2">Empresa2</option>-->
-                    <?php } ?>
+                    <?php } else{?>
                         <option value="<?php echo $fila["Id_Empresa"];?>" ><?php echo $fila["Nombre"];?></option>
                     <?php 
-                } ?>
+                }} ?>
               </select>
             </div>
             <button type="submit" class="btn btn-primary" name="Update_Asesor"  >Editar</button>

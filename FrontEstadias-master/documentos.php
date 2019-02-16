@@ -24,35 +24,56 @@
     <div class="container">
       <div class="row">
         <div class="col-3">
-          <form>
+          <form action="php/Insertar_Docs.php" method="POST">
             <h3>Añadir Documentos</h3>
             <div class="form-group">
               <label for="inputProyecto">Proyecto</label>
-              <select class="form-control" name="inputProyecto" id="inputAsesorEmpresa">
-                <option value="Proyecto">Proyecto</option>
+              <select class="form-control" name="proyecto" id="inputAsesorEmpresa">
+              <?php include("conf/db.php");
+                $query=" SELECT * From proyecto; ";
+                $resultado=mysqli_query($conn,$query);
+                while($fila=mysqli_fetch_array($resultado)){
+              ?>
+                <option value="<?php echo $fila["Id_Proyecto"];?>"><?php echo $fila["NProyecto"];?></option>
+                <?php } ?>
               </select>
             </div>
             <div class="form-group">
               <label for="inputDoc1">Documento 1</label>
-              <input type="text" class="form-control" id="inputDoc1" aria-describedby="emailHelp" placeholder="DOC">
+              <select class="form-control" name="d1" id="inputAsesorEmpresa" name="doc1">
+                <option value="1">Entregado</option>
+                <option value="0" selected>Sin Entregar</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="inputDoc2">Documento 2</label>
-              <input type="text" class="form-control" id="inputDoc2" placeholder="DOC">
+              <select class="form-control" name="d2" id="inputAsesorEmpresa" name="doc2">
+                <option value="1">Entregado</option>
+                <option value="0" selected>Sin Entregar</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="inputDoc3">Documento 3</label>
-              <input type="text" class="form-control" id="inputDoc3" placeholder="DOC">
+              <select class="form-control" name="d3" id="inputAsesorEmpresa" name="doc3">
+                <option value="1">Entregado</option>
+                <option value="0" selected>Sin Entregar</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="inputDoc4">Documento 4</label>
-              <input type="text" class="form-control" id="inputDoc4" placeholder="DOC">
+              <select class="form-control" name="d4" id="inputAsesorEmpresa" name="doc4">
+                <option value="1">Entregado</option>
+                <option value="0" selected>Sin Entregar</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="inputDoc5">Documento 4</label>
-              <input type="text" class="form-control" id="inputDoc5" placeholder="DOC">
+              <select class="form-control" name="d5" id="inputAsesorEmpresa" name="doc5">
+                <option value="1">Entregado</option>
+                <option value="0" selected>Sin Entregar</option>
+              </select>
             </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary" name="Save_Docs">Guardar</button>
           </form>
         </div>
         <div class="col-9">
@@ -60,44 +81,33 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">Proyecto</th>
-                <th scope="col">Documento 1</th>
-                <th scope="col">Documento 2</th>
-                <th scope="col">Documento 3</th>
-                <th scope="col">Documento 4</th>
-                <th scope="col">Documento 5</th>
+                <th scope="col">Document 1</th>
+                <th scope="col">Document 2</th>
+                <th scope="col">Document 3</th>
+                <th scope="col">Document 4</th>
+                <th scope="col">Document 5</th>
+                <th scope="col">Opciones</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>Proyecto</th>
-                <td>Doc</td>
-                <td>Doc</td>
-                <td>Doc</td>
-                <td>Doc</td>
-                <td>Doc</td>
+                <?php $query="SELECT * FROM documentos";
+                  $resultado=mysqli_query($conn,$query);
+                  while($fila=mysqli_fetch_array($resultado)){
+                ?>
+                <tr>
+                <th ><?php echo $fila["Id_Proyecto"];?></th>
+                <td><?php if($fila["Doc_1"]==1){ echo "Entregado";}else{echo "Sin Entregar";}?></td>
+                <td><?php if($fila["Doc_2"]==1){ echo "Entregado";}else{echo "Sin Entregar";}?></td>
+                <td><?php if($fila["Doc_3"]==1){ echo "Entregado";}else{echo "Sin Entregar";}?></td>
+                <td><?php if($fila["Doc_4"]==1){ echo "Entregado";}else{echo "Sin Entregar";}?></td>
+                <td><?php if($fila["Doc_5"]==1){ echo "Entregado";}else{echo "Sin Entregar";}?></td>
+                <td><a class="btn btn-warning" href ="php/EditarD_Vista.php?id=<?php echo $fila["Id_Documentos"];?>">Editar</a>
+                  <a class="btn btn-danger" href="php/Eliminar_Docs.php?id=<?php echo $fila["Id_Documentos"];?>">Finalizar</a>  </td>
                 <!-- <td> <button class="btn btn-warning" type="button" name="btnEditar">Editar</button> <button class="btn btn-danger" type="button" name="btnEliminar" data-toggle="modal" data-target="#exampleModal">Eliminar</button> </td> -->
                 <!-- Button trigger modal -->
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Eliminando Asesor</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        ¿Estas seguro de querer eliminar [NOMBRE]?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger">Eliminar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </tr>
+                </tr> 
+                <?php } ?>
             </tbody>
           </table>
         </div>
