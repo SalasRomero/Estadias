@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="utf-8">
+  <title>Estadías | Proyectos</title>
+</head>
+<body>
+  <div w3-include-html="includes/navbar.html"></div>
+
+  <div class="section section-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="text-primary">Gestión de proyectos</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section bottom-margin">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <form>
+            <h3>Añadir Proyecto</h3>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="inputNombreAlumno">Alumno</label>
+                  <input type="text" class="form-control" id="inputNombreAlumno" aria-describedby="emailHelp" placeholder="Alumno">
+                </div>
+                <div class="form-group">
+                  <label for="inputAsesorEmpresarial">Asesor Empresarial</label>
+                  <input type="password" class="form-control" id="inputAsesorEmpresarial" placeholder="Asesor Empresarial">
+                </div>
+                <div class="form-group">
+                  <label for="inputAsesorAcademico">Asesor Académico</label>
+                  <input type="email" class="form-control" id="inputAsesorAcademico" placeholder="Asesor Académico">
+                </div>
+                <div class="form-group">
+                  <label for="inputProyecto">Proyecto</label>
+                  <input type="phone" class="form-control" id="inputProyecto" placeholder="Proyecto">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="inputDescripcion">Descripción</label>
+                  <input type="email" class="form-control" id="inputDescripcion" placeholder="Descripción">
+                </div>
+                <div class="form-group">
+                  <label for="inputFechaInicio">Fecha de inicio</label>
+                  <input type="date" class="form-control" id="inputFechaInicio" placeholder="Inicio">
+                </div>
+                <div class="form-group">
+                  <label for="inputFechaCierre">Fecha de cierre</label>
+                  <input type="date" class="form-control" id="inputFechaCierre" placeholder="Fin">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="col-12">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Alumno</th>
+                <th scope="col">Asesor Empresa</th>
+                <th scope="col">Asesor Escuela</th>
+                <th scope="col">Proyecto</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Periodo</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Roberto</th>
+                <td>Señor Licenciado</td>
+                <td>Señor Maestro</td>
+                <td>Carro volador</td>
+                <td>Un carro volador</td>
+                <td>Enero 2018 - Marzo 2018</td>
+                <td> <button class="btn btn-warning" type="button" name="btnEditar">Editar</button> <button class="btn btn-success" type="button" name="btnEliminar" data-toggle="modal" data-target="#exampleModal">Finalizar</button> </td>
+                <!-- Button trigger modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Finalizar Proyecto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ¿Estas seguro de querer terminar el proyecto: [NOMBRE]?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success">Finalizar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/funciones.js"></script>
+  <script type="js/bootstrap.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+<script>
+includeHTML();
+</script>
+</html>
